@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OPNCodingChallenge">
         <activity
-            android:name=".MainActivity"
+            android:name=".business.order.ui.ProcessOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".business.store.ui.StoreListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
