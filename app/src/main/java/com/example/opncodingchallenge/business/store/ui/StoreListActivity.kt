@@ -2,13 +2,26 @@ package com.example.opncodingchallenge.business.store.ui
 
 import com.example.opncodingchallenge.base.BaseActivity
 import com.example.opncodingchallenge.business.store.contract.StoreListContract
+import com.example.opncodingchallenge.business.store.model.StoreResultModel
 import com.example.opncodingchallenge.business.store.presenter.StoreListPresenter
 import com.example.opncodingchallenge.databinding.ActivityStoreListBinding
 
 class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresenter>(),
     StoreListContract.View {
-    override fun requestInfoOnSuccess() {
-        TODO("Not yet implemented")
+    private var productAdapter = StoreListAdapter()
+
+    override fun requestInfoOnSuccess(storeResultModel: StoreResultModel) {
+        binding.apply {
+            storeResultModel.storeInfoBean?.apply {
+                shopTitleTv.text = name
+                shopRatingTv.text = rating.toString()
+                openTimeTv.text = openingTime
+                closeTimeTv.text = closingTime
+            }
+            if (storeResultModel.productList.isNotEmpty()) {
+                productAdapter.setData(storeResultModel.productList)
+            }
+        }
     }
 
     override fun getInfoOnFailure() {
@@ -19,20 +32,19 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
         TODO("Not yet implemented")
     }
 
-    override fun getViewBinding(): ActivityStoreListBinding {
-        TODO("Not yet implemented")
-    }
+    override fun getViewBinding() = ActivityStoreListBinding.inflate(layoutInflater)
 
-    override fun getPresenter(): StoreListPresenter {
-        TODO("Not yet implemented")
-    }
+    override fun getPresenter() = StoreListPresenter()
 
     override fun initView() {
-        TODO("Not yet implemented")
+        binding.apply {
+            storeItemsRv.adapter = productAdapter
+
+        }
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+        mPresenter?.requestInfo()
     }
 
 }

@@ -2,8 +2,8 @@ package com.example.opncodingchallenge.business.store.presenter
 
 import com.example.opncodingchallenge.base.BasePresenter
 import com.example.opncodingchallenge.business.service.StoreService
-import com.example.opncodingchallenge.business.store.StoreResultModel
 import com.example.opncodingchallenge.business.store.contract.StoreListContract
+import com.example.opncodingchallenge.business.store.model.StoreResultModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

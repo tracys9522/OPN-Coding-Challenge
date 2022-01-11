@@ -6,16 +6,18 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : AppCompatActivity(),
     BaseContract.BaseView {
-    private var mPresenter: P? = null
-    private lateinit var binding: VB
+    protected var mPresenter: P? = null
+    protected lateinit var binding: VB
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = getPresenter()
         mPresenter?.attachView(this)
+
         binding = getViewBinding()
         setContentView(binding.root)
+
         initView()
         initData()
     }

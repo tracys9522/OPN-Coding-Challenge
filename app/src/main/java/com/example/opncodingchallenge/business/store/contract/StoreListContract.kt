@@ -1,11 +1,12 @@
 package com.example.opncodingchallenge.business.store.contract
 
 import com.example.opncodingchallenge.base.BaseContract
+import com.example.opncodingchallenge.business.store.model.StoreResultModel
 
 interface StoreListContract {
 
     interface View : BaseContract.BaseView {
-        fun requestInfoOnSuccess()
+        fun requestInfoOnSuccess(storeResultModel: StoreResultModel)
         fun getInfoOnFailure()
     }
 
