@@ -9,6 +9,9 @@ interface BaseContract {
     }
 
     interface BaseView {
+        fun showLoading()
+        fun hideLoading()
+        fun showToastError(msg: String)
         fun onError(e: Throwable?)
     }
 

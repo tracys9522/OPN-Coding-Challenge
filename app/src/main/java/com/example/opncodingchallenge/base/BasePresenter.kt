@@ -1,12 +1,13 @@
 package com.example.opncodingchallenge.base
 
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import java.util.*
 
 abstract class BasePresenter<V : BaseContract.BaseView> : BaseContract.BasePresenter {
 
-    private var mView: V? = null
-    private var disposableList: MutableList<Disposable> = ArrayList()
+    protected var mView: V? = null
+    private var mCompositeDisposable: CompositeDisposable? = null
 
 
     override fun attachView(view: BaseContract.BaseView) {
@@ -20,12 +21,11 @@ abstract class BasePresenter<V : BaseContract.BaseView> : BaseContract.BasePrese
     }
 
     override fun cancelAll() {
-        for (disposable in disposableList) {
-            disposable.dispose()
-        }
+        mCompositeDisposable?.dispose()
     }
 
     protected fun addToDisposable(disposable: Disposable) {
-        disposableList.add(disposable)
+        if (mCompositeDisposable == null) mCompositeDisposable = CompositeDisposable()
+        mCompositeDisposable?.add(disposable)
     }
 }

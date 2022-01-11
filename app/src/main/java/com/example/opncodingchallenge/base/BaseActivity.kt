@@ -26,9 +26,6 @@ abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : 
 
     protected abstract fun initView()
 
-    override fun onError(e: Throwable?) {
-    }
-
     protected abstract fun initData()
 
     override fun onDestroy() {
@@ -36,7 +33,20 @@ abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : 
         if (mPresenter != null) {
             mPresenter?.cancelAll()
             mPresenter?.detachView()
+            mPresenter = null
         }
+    }
+
+    override fun showLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun hideLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showToastError(msg: String) {
+        TODO("Not yet implemented")
     }
 
 }
