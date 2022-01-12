@@ -33,6 +33,7 @@
         android:paddingEnd="50dp">
 
         <ImageView
+            android:id="@+id/minus_item_iv"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@mipmap/minus" />
@@ -46,6 +47,7 @@
             android:paddingEnd="5dp"/>
 
         <ImageView
+            android:id="@+id/add_item_iv"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@mipmap/plus" />
