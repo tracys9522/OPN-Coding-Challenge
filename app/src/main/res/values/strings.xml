@@ -3,4 +3,8 @@
     <string name="opnlangOrderNow">Order</string>
     <string name="opnlangSelectAll">Select All</string>
     <string name="opnlangNoItems">No Items</string>
+    <string name="opnlangAddress">address</string>
+    <string name="opnlangConfirmNow">Confirm</string>
+    <string name="opnlangTotalPrice">Total: {1}</string>
+    <string name="opnlangSelectFirstTip">Please Select Items First.</string>
 </resources>

@@ -17,12 +17,26 @@
         android:layout_marginStart="5dp"
         android:src="@drawable/ic_launcher_background" />
 
-
-    <TextView
-        android:id="@+id/item_price_tv"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:text="dddddd"/>
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Unit Price: dddddd" />
+
+        <TextView
+            android:id="@+id/total_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="dddddd" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,9 +56,9 @@
             android:id="@+id/item_amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:paddingStart="5dp"
-            android:paddingEnd="5dp"/>
+            android:paddingEnd="5dp"
+            android:text="0" />
 
         <ImageView
             android:id="@+id/add_item_iv"

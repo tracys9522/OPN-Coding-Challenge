@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -34,7 +35,7 @@ class ApiRetrofit {
         val endTime = System.currentTimeMillis()
         val duration = endTime - startTime
         val mediaType = response.body()?.contentType()
-        val content = response.body()?.toString()
+        val content = response.body()?.string()
         Log.e(TAG, "----------Request Start----------------")
         Log.e(TAG, "| " + request.toString() + request.headers().toString())
         Log.e(TAG, "| Response:$content")
@@ -53,7 +54,7 @@ class ApiRetrofit {
 
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(ResponseConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)

@@ -1,6 +1,7 @@
 package com.example.opncodingchallenge.base
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
@@ -48,7 +49,7 @@ abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : 
     }
 
     override fun showToastError(msg: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
 }

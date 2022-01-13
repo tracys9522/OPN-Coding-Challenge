@@ -4,6 +4,7 @@ import com.example.opncodingchallenge.bean.ProductInfoBean
 import com.example.opncodingchallenge.bean.StoreInfoBean
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface ApiServer {
     @GET("/storeInfo")
@@ -11,4 +12,7 @@ interface ApiServer {
 
     @GET("/products")
     fun getStoreProduct(): Single<List<ProductInfoBean>>
+
+    @POST("")
+    fun makeOrder()
 }

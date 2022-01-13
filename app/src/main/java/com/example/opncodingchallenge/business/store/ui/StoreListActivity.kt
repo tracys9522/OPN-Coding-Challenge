@@ -1,6 +1,7 @@
 package com.example.opncodingchallenge.business.store.ui
 
 import android.content.Intent
+import com.example.opncodingchallenge.R
 import com.example.opncodingchallenge.base.BaseActivity
 import com.example.opncodingchallenge.business.order.ui.ProcessOrderActivity
 import com.example.opncodingchallenge.business.store.contract.StoreListContract
@@ -42,17 +43,25 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
     override fun initView() {
         binding.apply {
             storeItemsRv.adapter = productAdapter
-            productAdapter.onItemClickListener = { product, index ->
+
+            productAdapter.onSelectAllListener = { isAllSelected ->
+                selectAllCb.isChecked = isAllSelected
             }
 
-            selectAllCb.setOnClickListener { selectAll ->
-                productAdapter.mDatas.onEach { it.isSelected = selectAll.isSelected }
+            selectAllCb.setOnClickListener {
+                productAdapter.selectAllOnClick(selectAllCb.isChecked)
             }
 
             orderBtn.setOnClickListener {
                 val data = productAdapter.mDatas.filter {
                     it.isSelected
                 }
+
+                if (data.isEmpty()) {
+                    showToastError(getString(R.string.opnlangSelectFirstTip))
+                    return@setOnClickListener
+                }
+
                 val intent = Intent(this@StoreListActivity, ProcessOrderActivity::class.java)
                 intent.putExtra(ORDER_INTENT, data as Serializable)
                 startActivity(intent)
