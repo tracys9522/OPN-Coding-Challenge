@@ -41,6 +41,7 @@ class OrderProductAdapter : CommonAdapter<ProductModel, ProductItemBinding>() {
 
         fun bindData(product: ProductModel) {
             binding.apply {
+                itemNameTv.text = product.name
                 itemPriceTv.text = product.unitPrice.toString()
                 totalPriceTv.text = product.price.toString()
             }

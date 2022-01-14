@@ -36,6 +36,9 @@ class StoreListAdapter : CommonAdapter<ProductModel, StoreItemBinding>() {
 
             selectItemCb.setOnClickListener {
                 data.isSelected = !data.isSelected
+                if (data.isSelected && data.quantity == 0) {
+                    ++data.quantity
+                }
                 notifyItemChanged(adapterPosition)
                 if (isAllSelected()) {
                     onSelectAllListener.invoke(true)
