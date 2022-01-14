@@ -7,7 +7,7 @@ import com.example.opncodingchallenge.business.store.model.StoreResultModel
 interface ProcessOrderContract {
 
     interface View : BaseContract.BaseView {
-        fun requestOrderOnSuccess(storeResultModel: StoreResultModel)
+        fun requestOrderOnSuccess()
         fun requestOrderOnFailure()
     }
 

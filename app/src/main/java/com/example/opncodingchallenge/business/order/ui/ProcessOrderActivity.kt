@@ -44,16 +44,14 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
 
     }
 
-    override fun requestOrderOnSuccess(storeResultModel: StoreResultModel) {
-        TODO("Not yet implemented")
+    override fun requestOrderOnSuccess() {
+        
     }
 
     override fun requestOrderOnFailure() {
-        TODO("Not yet implemented")
     }
 
     override fun onError(e: Throwable?) {
-        TODO("Not yet implemented")
     }
 
 }

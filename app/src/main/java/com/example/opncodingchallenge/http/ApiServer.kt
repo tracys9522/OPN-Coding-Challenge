@@ -3,7 +3,9 @@ package com.example.opncodingchallenge.http
 import com.example.opncodingchallenge.business.service.bean.ProductInfoBean
 import com.example.opncodingchallenge.business.service.bean.StoreInfoBean
 import com.example.opncodingchallenge.business.service.param.OrderParam
+import io.reactivex.Completable
 import io.reactivex.Single
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -15,5 +17,5 @@ interface ApiServer {
     fun getStoreProduct(): Single<List<ProductInfoBean>>
 
     @POST("/order")
-    fun makeOrder(orderParam: OrderParam)
+    fun makeOrder(@Body orderParam: OrderParam): Completable
 }
