@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_image_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/item_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="Unit Price: dddddd" />
+
+    <TextView
+        android:id="@+id/total_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="dddddd" />
+
+</LinearLayout>
+

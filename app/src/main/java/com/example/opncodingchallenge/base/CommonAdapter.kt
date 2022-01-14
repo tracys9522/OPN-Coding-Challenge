@@ -7,6 +7,10 @@ import androidx.viewbinding.ViewBinding
 abstract class CommonAdapter<T : Any, VB : ViewBinding> :
     RecyclerView.Adapter<CommonViewHolder<VB>>() {
     open var mDatas: MutableList<T> = mutableListOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     abstract override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommonViewHolder<VB>
 

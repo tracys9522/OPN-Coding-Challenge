@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.opncodingchallenge.base.CommonAdapter
 import com.example.opncodingchallenge.base.CommonViewHolder
-import com.example.opncodingchallenge.bean.ProductInfoBean
+import com.example.opncodingchallenge.business.service.bean.ProductInfoBean
 import com.example.opncodingchallenge.business.store.model.ProductModel
 import com.example.opncodingchallenge.databinding.StoreItemBinding
 
@@ -32,7 +32,7 @@ class StoreListAdapter : CommonAdapter<ProductModel, StoreItemBinding>() {
         binding.apply {
             Glide.with(binding.root.context)
                 .load(data.imageDrawable)
-                .into(binding.itemImageIv)
+                .into(itemImageIv)
 
             selectItemCb.setOnClickListener {
                 data.isSelected = !data.isSelected
@@ -73,7 +73,8 @@ class StoreListAdapter : CommonAdapter<ProductModel, StoreItemBinding>() {
                 ProductModel(
                     imageDrawable = productInfoBean.imageUrl,
                     price = productInfoBean.price,
-                    unitPrice = productInfoBean.price
+                    unitPrice = productInfoBean.price,
+                    name = productInfoBean.name
                 )
             )
             notifyItemChanged(index)

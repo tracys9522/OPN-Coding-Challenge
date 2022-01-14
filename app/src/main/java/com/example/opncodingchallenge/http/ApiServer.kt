@@ -1,7 +1,8 @@
 package com.example.opncodingchallenge.http
 
-import com.example.opncodingchallenge.bean.ProductInfoBean
-import com.example.opncodingchallenge.bean.StoreInfoBean
+import com.example.opncodingchallenge.business.service.bean.ProductInfoBean
+import com.example.opncodingchallenge.business.service.bean.StoreInfoBean
+import com.example.opncodingchallenge.business.service.param.OrderParam
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -13,6 +14,6 @@ interface ApiServer {
     @GET("/products")
     fun getStoreProduct(): Single<List<ProductInfoBean>>
 
-    @POST("")
-    fun makeOrder()
+    @POST("/order")
+    fun makeOrder(orderParam: OrderParam)
 }

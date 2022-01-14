@@ -1,4 +1,4 @@
-package com.example.opncodingchallenge.bean
+package com.example.opncodingchallenge.business.service.bean
 
 data class ProductInfoBean(
     val imageUrl: String,

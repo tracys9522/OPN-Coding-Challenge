@@ -7,4 +7,5 @@
     <string name="opnlangConfirmNow">Confirm</string>
     <string name="opnlangTotalPrice">Total: {1}</string>
     <string name="opnlangSelectFirstTip">Please Select Items First.</string>
+    <string name="opnlangMakeOrderTip">Please enter address first.</string>
 </resources>
