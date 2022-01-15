@@ -7,7 +7,6 @@ interface StoreListContract {
 
     interface View : BaseContract.BaseView {
         fun requestInfoOnSuccess(storeResultModel: StoreResultModel)
-        fun getInfoOnFailure()
     }
 
     interface Presenter {

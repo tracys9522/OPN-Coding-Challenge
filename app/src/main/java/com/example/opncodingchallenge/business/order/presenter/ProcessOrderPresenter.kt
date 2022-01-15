@@ -12,6 +12,9 @@ import io.reactivex.schedulers.Schedulers
 class ProcessOrderPresenter : BasePresenter<ProcessOrderContract.View>(),
     ProcessOrderContract.Presenter {
     override fun makeOrder(initOrder: MutableList<ProductModel>, address: String) {
+        mView?.apply {
+            if (!isLoading) showLoading()
+        }
         val products = mutableListOf<Product>()
         initOrder.onEach {
             products.add(
@@ -31,8 +34,18 @@ class ProcessOrderPresenter : BasePresenter<ProcessOrderContract.View>(),
         ).observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
-                       mView?.requestOrderOnSuccess()
+                mView?.apply {
+                    if (isLoading) {
+                        hideLoading()
+                    }
+                }
+                mView?.requestOrderOnSuccess()
             }, {
+                mView?.apply {
+                    if (isLoading) {
+                        hideLoading()
+                    }
+                }
                 mView?.onError(it)
             })
             .also { addToDisposable(it) }

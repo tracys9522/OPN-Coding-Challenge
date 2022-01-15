@@ -8,4 +8,5 @@
     <string name="opnlangTotalPrice">Total: {1}</string>
     <string name="opnlangSelectFirstTip">Please Select Items First.</string>
     <string name="opnlangMakeOrderTip">Please enter address first.</string>
+    <string name="opnlangContactTech">Please contact our tech support.</string>
 </resources>

@@ -28,12 +28,8 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
         }
     }
 
-    override fun getInfoOnFailure() {
-        TODO("Not yet implemented")
-    }
-
     override fun onError(e: Throwable?) {
-        TODO("Not yet implemented")
+        showToastError(getString(R.string.opnlangContactTech))
     }
 
     override fun getViewBinding() = ActivityStoreListBinding.inflate(layoutInflater)

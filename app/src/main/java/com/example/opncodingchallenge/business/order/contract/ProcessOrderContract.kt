@@ -8,7 +8,6 @@ interface ProcessOrderContract {
 
     interface View : BaseContract.BaseView {
         fun requestOrderOnSuccess()
-        fun requestOrderOnFailure()
     }
 
     interface Presenter {

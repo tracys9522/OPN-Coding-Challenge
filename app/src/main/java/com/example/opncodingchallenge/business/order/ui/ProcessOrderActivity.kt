@@ -5,9 +5,9 @@ import com.example.opncodingchallenge.base.BaseActivity
 import com.example.opncodingchallenge.business.order.contract.ProcessOrderContract
 import com.example.opncodingchallenge.business.order.presenter.ProcessOrderPresenter
 import com.example.opncodingchallenge.business.store.model.ProductModel
-import com.example.opncodingchallenge.business.store.model.StoreResultModel
 import com.example.opncodingchallenge.business.store.ui.StoreListActivity
 import com.example.opncodingchallenge.databinding.ActivityProcessOrderBinding
+import com.example.opncodingchallenge.util.CommonDialog
 
 class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOrderPresenter>(),
     ProcessOrderContract.View {
@@ -38,6 +38,9 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
         if (!intentExtras.isNullOrEmpty()) {
             initOrder = intentExtras
             orderProductAdapter.mDatas = initOrder.toMutableList()
+            var total = 0.00
+            initOrder.onEach { total += it.price }
+            binding.totalTv.text = total.toString()
         } else {
             //END ACTIVITY
         }
@@ -45,13 +48,19 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
     }
 
     override fun requestOrderOnSuccess() {
-        
-    }
-
-    override fun requestOrderOnFailure() {
+        CommonDialog().setTitle("Confirmed")
+            .setMessage("Order has been placed.")
+            .setCanceledOnTouchOutside(false)
+            .onSuccessBtnText("Ok")
+            .onSuccessListener {
+                //TODO BACK TO MAIN PAGE
+                it?.dismiss()
+            }
+            .show(supportFragmentManager, null)
     }
 
     override fun onError(e: Throwable?) {
+        showToastError(getString(R.string.opnlangContactTech))
     }
 
 }

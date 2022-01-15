@@ -7,6 +7,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface ApiServer {
@@ -16,6 +17,7 @@ interface ApiServer {
     @GET("/products")
     fun getStoreProduct(): Single<List<ProductInfoBean>>
 
+    @Headers("Content-Type: application/json")
     @POST("/order")
     fun makeOrder(@Body orderParam: OrderParam): Completable
 }

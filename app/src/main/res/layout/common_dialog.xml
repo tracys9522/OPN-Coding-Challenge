@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -11,18 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:gravity="center_horizontal"
+        android:textSize="20dp"
         tools:text="ldkfjoiewjefoiewf" />
 
     <TextView
         android:id="@+id/message_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:textSize="16dp"
         tools:text="jwoiejfowiejfwoifeoiew" />
 
-    <Button
-        android:id="@+id/confirm_btn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="confirm" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/theme"
+            android:visibility="gone"
+            tools:text="cancel" />
+
+        <Button
+            android:id="@+id/confirm_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/theme"
+            tools:text="confirm" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

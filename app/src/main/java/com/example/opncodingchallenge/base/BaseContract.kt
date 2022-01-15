@@ -9,6 +9,7 @@ interface BaseContract {
     }
 
     interface BaseView {
+        var isLoading: Boolean
         fun showLoading()
         fun hideLoading()
         fun showToastError(msg: String)

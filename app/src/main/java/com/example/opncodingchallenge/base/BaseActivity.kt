@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.example.opncodingchallenge.util.LoadingDialog
 
 abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : AppCompatActivity(),
     BaseContract.BaseView {
     protected var mPresenter: P? = null
     protected lateinit var binding: VB
+    protected lateinit var mLoadingDialog: LoadingDialog
+    override var isLoading: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,11 +44,16 @@ abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : 
     }
 
     override fun showLoading() {
-        TODO("Not yet implemented")
+        mLoadingDialog = LoadingDialog()
+        mLoadingDialog.show(supportFragmentManager, null)
+        isLoading = true
     }
 
     override fun hideLoading() {
-        TODO("Not yet implemented")
+        if (mLoadingDialog.isVisible) {
+            mLoadingDialog.dismissAllowingStateLoss()
+        }
+        isLoading = false
     }
 
     override fun showToastError(msg: String) {

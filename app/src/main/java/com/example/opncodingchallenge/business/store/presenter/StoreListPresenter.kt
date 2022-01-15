@@ -10,6 +10,9 @@ import io.reactivex.schedulers.Schedulers
 
 class StoreListPresenter : BasePresenter<StoreListContract.View>(), StoreListContract.Presenter {
     override fun requestInfo() {
+        mView?.apply {
+            if (!isLoading) showLoading()
+        }
         val storeRequest = ApiRetrofit.getInstance().apiServer.getStoreInfo()
         val itemRequest = ApiRetrofit.getInstance().apiServer.getStoreProduct()
 
@@ -19,8 +22,18 @@ class StoreListPresenter : BasePresenter<StoreListContract.View>(), StoreListCon
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
+                    mView?.apply {
+                        if (isLoading) {
+                            hideLoading()
+                        }
+                    }
                     mView?.requestInfoOnSuccess(it)
                 }, {
+                    mView?.apply {
+                        if (isLoading) {
+                            hideLoading()
+                        }
+                    }
                     mView?.onError(it)
                 }
             )
