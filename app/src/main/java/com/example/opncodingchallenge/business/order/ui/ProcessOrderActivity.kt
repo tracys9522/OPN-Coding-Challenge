@@ -45,9 +45,8 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
             binding.totalTv.text =
                 getString(R.string.opnlangTotalPrice).processString(total.toString())
         } else {
-            //END ACTIVITY
+            finish()
         }
-
     }
 
     override fun requestOrderOnSuccess() {

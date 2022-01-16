@@ -25,7 +25,8 @@
             android:id="@+id/address_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/opnlangAddress" />
+            android:hint="@string/opnlangAddress"
+            android:inputType="text" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

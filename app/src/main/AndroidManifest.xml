@@ -16,6 +16,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".business.store.ui.StoreListActivity"
+            android:theme="@style/Theme.NoActionBar"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
