@@ -21,19 +21,20 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="5dp">
 
         <TextView
             android:id="@+id/item_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:text="Unit Price: dddddd" />
+            android:text="@string/opnlangUnitPrice" />
 
         <TextView
             android:id="@+id/total_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:text="dddddd" />
+            android:text="@string/opnlangTotalPrice" />
 
     </LinearLayout>
 

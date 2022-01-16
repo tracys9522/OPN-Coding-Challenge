@@ -2,11 +2,18 @@
     <string name="app_name">OPN Coding Challenge</string>
     <string name="opnlangOrderNow">Order</string>
     <string name="opnlangSelectAll">Select All</string>
-    <string name="opnlangNoItems">No Items</string>
+    <string name="opnlangNoItems">No Item Found.</string>
     <string name="opnlangAddress">address</string>
     <string name="opnlangConfirmNow">Confirm</string>
-    <string name="opnlangTotalPrice">Total: {1}</string>
+    <string name="opnlangTotalPrice">Total: {0}</string>
     <string name="opnlangSelectFirstTip">Please Select Items First.</string>
     <string name="opnlangMakeOrderTip">Please enter address first.</string>
     <string name="opnlangContactTech">Please contact our tech support.</string>
+    <string name="opnlangDialogTitle">Confirmed</string>
+    <string name="opnlangDialogMessage">Order has been placed.</string>
+    <string name="opnlangOk">Ok</string>
+    <string name="opnlangTryAgain">Try Again</string>
+    <string name="opnlangUnitPrice">Unit Price: {0}</string>
+    <string name="opnlangOpeningTime">Open during: {0} - {1}</string>
+    <string name="opnlangRating">Rating: {0}</string>
 </resources>

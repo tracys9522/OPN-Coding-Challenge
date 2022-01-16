@@ -1,6 +1,7 @@
 package com.example.opncodingchallenge.business.store.ui
 
 import android.content.Intent
+import android.view.View
 import com.example.opncodingchallenge.R
 import com.example.opncodingchallenge.base.BaseActivity
 import com.example.opncodingchallenge.business.order.ui.ProcessOrderActivity
@@ -9,6 +10,7 @@ import com.example.opncodingchallenge.business.store.model.ProductModel
 import com.example.opncodingchallenge.business.store.model.StoreResultModel
 import com.example.opncodingchallenge.business.store.presenter.StoreListPresenter
 import com.example.opncodingchallenge.databinding.ActivityStoreListBinding
+import com.example.opncodingchallenge.util.StringUtil.processString
 
 class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresenter>(),
     StoreListContract.View {
@@ -16,11 +18,22 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
 
     override fun requestInfoOnSuccess(storeResultModel: StoreResultModel) {
         binding.apply {
+            if (noItemTv.visibility == View.VISIBLE) {
+                noItemTv.visibility = View.INVISIBLE
+            }
+            if (refreshTv.visibility == View.VISIBLE) {
+                refreshTv.visibility = View.INVISIBLE
+            }
+            if (bottomContentLl.visibility == View.INVISIBLE) {
+                bottomContentLl.visibility = View.VISIBLE
+            }
+
             storeResultModel.storeInfoBean?.apply {
                 shopTitleTv.text = name
-                shopRatingTv.text = rating.toString()
-                openTimeTv.text = openingTime
-                closeTimeTv.text = closingTime
+                shopRatingTv.text =
+                    getString(R.string.opnlangRating).processString(rating.toString())
+                openTimeTv.text =
+                    getString(R.string.opnlangOpeningTime).processString(openingTime, closingTime)
             }
             if (storeResultModel.productList.isNotEmpty()) {
                 productAdapter.setData(storeResultModel.productList)
@@ -30,6 +43,11 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
 
     override fun onError(e: Throwable?) {
         showToastError(getString(R.string.opnlangContactTech))
+        binding.apply {
+            noItemTv.visibility = View.VISIBLE
+            refreshTv.visibility = View.VISIBLE
+            bottomContentLl.visibility = View.INVISIBLE
+        }
     }
 
     override fun getViewBinding() = ActivityStoreListBinding.inflate(layoutInflater)
@@ -46,6 +64,10 @@ class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresen
 
             selectAllCb.setOnClickListener {
                 productAdapter.selectAllOnClick(selectAllCb.isChecked)
+            }
+
+            refreshTv.setOnClickListener {
+                mPresenter?.requestInfo()
             }
 
             orderBtn.setOnClickListener {

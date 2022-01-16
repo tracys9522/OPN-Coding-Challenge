@@ -1,5 +1,6 @@
 package com.example.opncodingchallenge.business.order.ui
 
+import android.content.Intent
 import com.example.opncodingchallenge.R
 import com.example.opncodingchallenge.base.BaseActivity
 import com.example.opncodingchallenge.business.order.contract.ProcessOrderContract
@@ -8,6 +9,7 @@ import com.example.opncodingchallenge.business.store.model.ProductModel
 import com.example.opncodingchallenge.business.store.ui.StoreListActivity
 import com.example.opncodingchallenge.databinding.ActivityProcessOrderBinding
 import com.example.opncodingchallenge.util.CommonDialog
+import com.example.opncodingchallenge.util.StringUtil.processString
 
 class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOrderPresenter>(),
     ProcessOrderContract.View {
@@ -40,7 +42,8 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
             orderProductAdapter.mDatas = initOrder.toMutableList()
             var total = 0.00
             initOrder.onEach { total += it.price }
-            binding.totalTv.text = total.toString()
+            binding.totalTv.text =
+                getString(R.string.opnlangTotalPrice).processString(total.toString())
         } else {
             //END ACTIVITY
         }
@@ -48,13 +51,14 @@ class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOr
     }
 
     override fun requestOrderOnSuccess() {
-        CommonDialog().setTitle("Confirmed")
-            .setMessage("Order has been placed.")
+        CommonDialog().setTitle(getString(R.string.opnlangDialogTitle))
+            .setMessage(getString(R.string.opnlangDialogMessage))
             .setCanceledOnTouchOutside(false)
-            .onSuccessBtnText("Ok")
+            .onSuccessBtnText(getString(R.string.opnlangOk))
             .onSuccessListener {
-                //TODO BACK TO MAIN PAGE
                 it?.dismiss()
+                val intent = Intent(this, StoreListActivity::class.java)
+                startActivity(intent)
             }
             .show(supportFragmentManager, null)
     }
