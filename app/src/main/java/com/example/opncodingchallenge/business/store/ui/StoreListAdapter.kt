@@ -101,6 +101,7 @@ class StoreListAdapter : CommonAdapter<ProductModel, StoreItemBinding>() {
 
         fun bindData(product: ProductModel) {
             binding.apply {
+                itemNameTv.text = product.name
                 itemPriceTv.text = root.context.getString(R.string.opnlangUnitPrice)
                     .processString(product.unitPrice.toString())
                 selectItemCb.isChecked = product.isSelected

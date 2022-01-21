@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="horizontal">
 
@@ -12,7 +13,7 @@
 
     <ImageView
         android:id="@+id/item_image_iv"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="5dp"
         android:src="@drawable/ic_launcher_background" />
@@ -23,6 +24,12 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingStart="5dp">
+
+        <TextView
+            android:id="@+id/item_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            tools:text = "wpefpoewfkwe"/>
 
         <TextView
             android:id="@+id/item_price_tv"
