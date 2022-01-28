@@ -6,8 +6,7 @@ import com.example.opncodingchallenge.business.service.param.OrderParam
 import com.example.opncodingchallenge.business.service.param.Product
 import com.example.opncodingchallenge.business.store.model.ProductModel
 import com.example.opncodingchallenge.http.ApiRetrofit
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.example.opncodingchallenge.util.rxTransform
 
 class ProcessOrderPresenter : BasePresenter<ProcessOrderContract.View>(),
     ProcessOrderContract.Presenter {
@@ -31,8 +30,7 @@ class ProcessOrderPresenter : BasePresenter<ProcessOrderContract.View>(),
                 delivery_address = address,
                 products = products
             )
-        ).observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
+        ).rxTransform()
             .subscribe({
                 mView?.apply {
                     if (isLoading) {

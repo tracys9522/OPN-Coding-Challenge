@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.example.opncodingchallenge.util.LoadingDialog
 
-abstract class BaseActivity<VB : ViewBinding, P : BaseContract.BasePresenter> : AppCompatActivity(),
+abstract class BaseMVPActivity<VB : ViewBinding, P : BaseContract.BasePresenter> :
+    AppCompatActivity(),
     BaseContract.BaseView {
     protected var mPresenter: P? = null
     protected lateinit var binding: VB

@@ -3,7 +3,7 @@ package com.example.opncodingchallenge.business.store.ui
 import android.content.Intent
 import android.view.View
 import com.example.opncodingchallenge.R
-import com.example.opncodingchallenge.base.BaseActivity
+import com.example.opncodingchallenge.base.BaseMVPActivity
 import com.example.opncodingchallenge.business.order.ui.ProcessOrderActivity
 import com.example.opncodingchallenge.business.store.contract.StoreListContract
 import com.example.opncodingchallenge.business.store.model.ProductModel
@@ -12,7 +12,7 @@ import com.example.opncodingchallenge.business.store.presenter.StoreListPresente
 import com.example.opncodingchallenge.databinding.ActivityStoreListBinding
 import com.example.opncodingchallenge.util.StringUtil.processString
 
-class StoreListActivity : BaseActivity<ActivityStoreListBinding, StoreListPresenter>(),
+class StoreListActivity : BaseMVPActivity<ActivityStoreListBinding, StoreListPresenter>(),
     StoreListContract.View {
     private var productAdapter = StoreListAdapter()
 

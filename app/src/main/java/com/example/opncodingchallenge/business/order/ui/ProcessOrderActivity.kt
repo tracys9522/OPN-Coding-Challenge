@@ -2,7 +2,7 @@ package com.example.opncodingchallenge.business.order.ui
 
 import android.content.Intent
 import com.example.opncodingchallenge.R
-import com.example.opncodingchallenge.base.BaseActivity
+import com.example.opncodingchallenge.base.BaseMVPActivity
 import com.example.opncodingchallenge.business.order.contract.ProcessOrderContract
 import com.example.opncodingchallenge.business.order.presenter.ProcessOrderPresenter
 import com.example.opncodingchallenge.business.store.model.ProductModel
@@ -11,7 +11,7 @@ import com.example.opncodingchallenge.databinding.ActivityProcessOrderBinding
 import com.example.opncodingchallenge.util.CommonDialog
 import com.example.opncodingchallenge.util.StringUtil.processString
 
-class ProcessOrderActivity : BaseActivity<ActivityProcessOrderBinding, ProcessOrderPresenter>(),
+class ProcessOrderActivity : BaseMVPActivity<ActivityProcessOrderBinding, ProcessOrderPresenter>(),
     ProcessOrderContract.View {
     private lateinit var initOrder: MutableList<ProductModel>
     private var orderProductAdapter = OrderProductAdapter()

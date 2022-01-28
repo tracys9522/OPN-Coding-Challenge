@@ -38,6 +38,7 @@ class ApiRetrofit {
         val content = response.body()?.string()
         Log.i(TAG, "----------Request Start----------------")
         Log.i(TAG, "| " + request.toString() + request.headers().toString())
+        Log.i(TAG, "|" + response.code() + response.message())
         Log.i(TAG, "| Response:$content")
         Log.i(TAG, "----------Request End:" + duration + "ms----------")
         response.newBuilder()
